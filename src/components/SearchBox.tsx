@@ -7,8 +7,9 @@ interface SearchBoxProps {
 const SearchBox: React.FC<SearchBoxProps> = ({ onSearch }) => {
   return (
     <input
+      className="search-box"
       type="text"
-      placeholder="Search by title..."
+      placeholder="Search..."
       onChange={(e) => onSearch(e.target.value)}
     />
   );

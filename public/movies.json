@@ -10,29 +10,5 @@
     ],
     "totalRating": 9.25,
     "lastEdited": "2025-04-01"
-  },
-  {
-    "id": 2,
-    "title": "Game of Thrones",
-    "season": 1,
-    "type": "movie",
-    "episodes": [
-      { "episode": 1, "rating": 8.5 },
-      { "episode": 2, "rating": 8.8 }
-    ],
-    "totalRating": 8.65,
-    "lastEdited": "2025-03-28"
-  },
-  {
-    "id": 3,
-    "title": "test",
-    "season": 1,
-    "type": "movie",
-    "episodes": [
-      { "episode": 1, "rating": 10 },
-      { "episode": 2, "rating": 10 }
-    ],
-    "totalRating": 10,
-    "lastEdited": "2025-04-2"
   }
 ]

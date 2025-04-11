@@ -1,21 +1,26 @@
 import React from "react";
-import { Movie } from "../App"; // Import the Movie type
+import { useNavigate } from "react-router-dom";
+import { Movie } from "../App";
 
 interface TitleListProps {
-  items: Movie[]; // Accept an array of full Movie objects
-  onItemDoubleClick: (item: Movie) => void; // Pass the full Movie object
+  items: Movie[];
 }
 
-const TitleList: React.FC<TitleListProps> = ({ items, onItemDoubleClick }) => {
+const TitleList: React.FC<TitleListProps> = ({ items }) => {
+  const navigate = useNavigate();
+
   return (
-    <ul>
+    <ul className="title-list">
       {items.map((item) => (
         <li
           key={item.id}
-          onDoubleClick={() => onItemDoubleClick(item)} // Pass the full Movie object
-          style={{ cursor: "pointer" }}
+          style={{ display: "flex", justifyContent: "space-between", cursor: "pointer" }}
+          onClick={() => navigate(`/tv-show/${item.id}`)} // Navigate on single click
         >
-          {item.title} - {item.totalRating} points
+          <span>
+            {item.title} {item.type === "tv show" && item.season ? `S:${item.season}` : ""}
+          </span>
+          <span>{item.totalRating.toFixed(1)}</span>
         </li>
       ))}
     </ul>
