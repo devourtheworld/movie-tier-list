@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/movie-tier-list/static/css/main.6e700df9.css",
+    "main.js": "/movie-tier-list/static/js/main.3418c1c4.js",
+    "static/js/453.e5b00392.chunk.js": "/movie-tier-list/static/js/453.e5b00392.chunk.js",
+    "index.html": "/movie-tier-list/index.html",
+    "main.6e700df9.css.map": "/movie-tier-list/static/css/main.6e700df9.css.map",
+    "main.3418c1c4.js.map": "/movie-tier-list/static/js/main.3418c1c4.js.map",
+    "453.e5b00392.chunk.js.map": "/movie-tier-list/static/js/453.e5b00392.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6e700df9.css",
+    "static/js/main.3418c1c4.js"
+  ]
+}

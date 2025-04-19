@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Breaking Bad",
+    "season": 1,
+    "type": "movie",
+    "episodes": [
+      { "episode": 1, "rating": 9.5 },
+      { "episode": 2, "rating": 9.0 }
+    ],
+    "totalRating": 9.25,
+    "lastEdited": "2025-04-01"
+  }
+]
