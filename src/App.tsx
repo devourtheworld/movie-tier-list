@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SearchBox from "./components/SearchBox";
 import TitleList from "./components/TitleList";
@@ -29,6 +29,7 @@ const App: React.FC = () => {
   const [showList, setShowList] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const savedMovies = localStorage.getItem("moviesData");
@@ -87,19 +88,71 @@ const App: React.FC = () => {
     setShowFilters((prev) => !prev);
   };
 
+  const handleDownload = () => {
+    const dataStr = JSON.stringify(movies, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "moviesData.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
+        const uploadedMovies = JSON.parse(result);
+        setMovies(uploadedMovies);
+        setFilteredMovies(uploadedMovies);
+        localStorage.setItem("moviesData", JSON.stringify(uploadedMovies));
+      };
+      reader.readAsText(file);
+    }
+  };
+
   return (
-    <Router basename="/movie-tier-list">
+    <Router>
+    {/* <Router basename="/movie-tier-list"> */}
       <Routes>
         <Route
           path="/"
           element={
             <div className="main-container">
-              <div>
-                <SearchBox onSearch={handleSearch} />
-                {/* Add Item Button */}
-                <button className="add-button" onClick={() => setIsAdding(true)}>
-                  Add
-                </button>
+              {/* Conditional rendering for "Search" field and "Check Full List" button */}
+                <div className="search-container">
+                  {/* Data Buttons */}
+                <div className="data-buttons">
+                  <button className="download-button button" onClick={handleDownload}>
+                    Download
+                  </button>
+                  <button className="upload-button button" onClick={() => fileInputRef.current?.click()}>
+                    Upload
+                  </button>
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    accept=".json"
+                    style={{ display: "none" }}
+                    onChange={handleUpload}
+                  />
+                </div>
+                <div className="list-buttons-container">
+                  {showList ? (
+                    <SearchBox onSearch={handleSearch} />
+                  ) : (
+                    <button className="full-list-button button" onClick={handleLoadFullList}>
+                      Check Full List
+                    </button>
+                  )}
+                  {/* Add Item Button */}
+                  <button className="add-button button" onClick={() => setIsAdding(true)}>
+                    +
+                  </button>
+                </div>
               </div>
 
               {/* Add Item Form */}
@@ -137,9 +190,11 @@ const App: React.FC = () => {
 
               {/* Advanced Filter Button */}
               {showList && (
-                <button className="advanced-filter-button" onClick={toggleFilters}>
-                  {showFilters ? "Hide Filters" : "Advanced Filter"}
-                </button>
+                <div className="advanced-filter-container">
+                  <button className="advanced-filter-button" onClick={toggleFilters}>
+                    {showFilters ? "Hide Filters" : "Advanced Filter"}
+                  </button>
+                </div>
               )}
 
               {/* Advanced Filter Section */}
@@ -155,13 +210,6 @@ const App: React.FC = () => {
 
               {/* List of Items */}
               <TitleList items={showList ? filteredMovies : getLastFiveItems()} />
-
-              {/* Check Full List Button */}
-              {!showList && (
-                <button className="full-list-button" onClick={handleLoadFullList}>
-                  Check Full List
-                </button>
-              )}
             </div>
           }
         />

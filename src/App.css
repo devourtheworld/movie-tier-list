@@ -24,32 +24,112 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 20px;
   font-family: Arial, sans-serif;
+  width: 350px;
+  padding: 10px;
+  /* justify-content: center; */
+  justify-self: center;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~ GENERAL STYLES ~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.button {
+  background: #ffc400;
+  /* border: 1px solid transparent; */
+  padding: 10px;
+  border-radius: 3px;
+  font-weight: bold;
+  border: none;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~ GENERAL STYLES ~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~ TOP SECTION ~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.search-container{
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.search-container .add-button{
+  margin-left: 10px;
+}
+
+.list-buttons-container{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .search-box {
-  margin-bottom: 20px;
-  width: 300px;
-  padding: 10px;
+  width: 100%;
+  padding: 8px;
   font-size: 16px;
+}
+
+.full-list-button {
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  width: 100%;
+}
+
+.full-list-button:hover {
+  background-color: #0056b3;
+}
+
+.add-button {
+  /* margin-top: 20px; */
+  padding: 9px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #28a745;
+  color: white;
+  /* border-radius: 5px; */
+}
+
+.add-button:hover {
+  background-color: #218838;
+}
+
+.data-buttons{
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  /* flex-direction: row; */
+  width: 100%;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~ TOP SECTION ~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~ FILTER SECTION ~~~~~~~~~~~~~~~~~~~~~~~ */
+.filter-checkboxes {
+  margin: 10px 0 10px 0;
+  padding: 3px 2px 3px 2px;
+  display: flex;
+  gap: 20px;
+  background: #3a3a3a50;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.filter-checkboxes label {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filter-checkboxes input {
+  margin-right: 5px;
 }
 
 .filter-options {
@@ -90,21 +170,6 @@
   background-color: #0056b3;
 }
 
-.filter-checkboxes {
-  margin-bottom: 20px;
-  display: flex;
-  gap: 20px;
-}
-
-.filter-checkboxes label {
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.filter-checkboxes input {
-  margin-right: 5px;
-}
-
 .filter-buttons {
   margin-bottom: 10px;
 }
@@ -124,6 +189,45 @@
   background-color: #0056b3;
 }
 
+.advanced-filter-container {
+  display: flex;
+  background-color: #3636364d;
+  justify-content: center;
+  padding: 3px;
+  border-radius: 3px;
+  width: 100%;
+}
+.advanced-filter-button {
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~ FILTER SECTION ~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~ MIDDLE SECTION ~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.title-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  width: 100%;
+}
+
+.title-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  background: #454a5542;
+  border-radius: 3px;
+  margin: 0 0 3px 0;
+  transition: 0.3s;
+}
+
+.title-list li:hover {
+  background: #5858587a;
+  transition: 0.3s;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~ MIDDLE SECTION ~~~~~~~~~~~~~~~~~~~~~~~ */
+
 .sort-dropdown {
   margin-bottom: 20px;
 }
@@ -138,50 +242,6 @@
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 5px;
-}
-
-.title-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  width: 300px;
-}
-
-.title-list li {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-.full-list-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
-
-.full-list-button:hover {
-  background-color: #0056b3;
-}
-
-.add-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
-
-.add-button:hover {
-  background-color: #218838;
 }
 
 .add-item-form {
