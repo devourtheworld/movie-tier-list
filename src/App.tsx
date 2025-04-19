@@ -115,8 +115,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <Router>
-    {/* <Router basename="/movie-tier-list"> */}
+    // <Router>
+    <Router basename="/movie-tier-list">
       <Routes>
         <Route
           path="/"
